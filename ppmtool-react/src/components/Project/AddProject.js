@@ -2,23 +2,26 @@ import React from "react";
 import CreateProjectButton from "./CreateProjectButton";
 import PropTypes from "prop-types";
 import { connect } from "react-redux"
-import { createProject } from './../../actions/ProjectActions';
+import { createProject } from '../../redux/actions/ProjectActions';
 
 class AddProject extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.state = {};
-
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.state = {
+      projectName: "",
+      projectIdentifier: "",
+      description: "",
+      start_date: "",
+      end_date: ""
+    };
   }
 
-  onChange(e) {
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
     const newProject = {
       projectName: this.state.projectName,
@@ -106,4 +109,4 @@ AddProject.propTypes = {
   createProject: PropTypes.func.isRequired
 }
 
-export default connect(null, {createProject})(AddProject);
+export default connect(null, { createProject })(AddProject);

@@ -1,7 +1,7 @@
 package io.agileintelligence.ppmtool.services;
 
-import io.agileintelligence.ppmtool.models.security.User;
-import io.agileintelligence.ppmtool.repositories.UserRepository;
+import io.agileintelligence.ppmtool.models.security.PpmUser;
+import io.agileintelligence.ppmtool.repositories.PpmUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,19 +13,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    UserRepository userRepository;
+    PpmUserRepository ppmUserRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if(user == null) new UsernameNotFoundException("User not found");
-        return user;
+        PpmUser ppmUser = ppmUserRepository.findByUsername(username);
+        if(ppmUser == null) new UsernameNotFoundException("User not found");
+        return ppmUser;
     }
 
     @Transactional //Make sure to grab the spring one
-    public User loadUserById(Long id){
-        User user = userRepository.getById(id);
-        if(user == null) new UsernameNotFoundException("User not found");
-        return user;
+    public PpmUser loadUserById(Long id){
+        PpmUser ppmUser = ppmUserRepository.getById(id);
+        if(ppmUser == null) new UsernameNotFoundException("User not found");
+        return ppmUser;
     }
 }

@@ -1,6 +1,6 @@
 package io.agileintelligence.ppmtool.security;
 
-import io.agileintelligence.ppmtool.models.security.User;
+import io.agileintelligence.ppmtool.models.security.PpmUser;
 import io.agileintelligence.ppmtool.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter  extends OncePerRequestFilter {
             String jwt = getJwtFromRequest(httpServletRequest);
             if(StringUtils.hasText(jwt) && jwtTokenProvider.validateToken(jwt)){
                 Long userId = jwtTokenProvider.getUserIdFromJwt(jwt);
-                User userDetails = customUserDetailsService.loadUserById(userId);
+                PpmUser userDetails = customUserDetailsService.loadUserById(userId);
 
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         userDetails, null, Collections.emptyList()); //Collections is where roles would go

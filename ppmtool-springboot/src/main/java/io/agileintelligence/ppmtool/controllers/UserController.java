@@ -1,6 +1,6 @@
 package io.agileintelligence.ppmtool.controllers;
 
-import io.agileintelligence.ppmtool.models.security.User;
+import io.agileintelligence.ppmtool.models.security.PpmUser;
 import io.agileintelligence.ppmtool.payload.JwtLoginSuccessResponse;
 import io.agileintelligence.ppmtool.payload.LoginRequest;
 import io.agileintelligence.ppmtool.security.JwtTokenProvider;
@@ -60,15 +60,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser (@Valid @RequestBody User user, BindingResult result){
+    public ResponseEntity<?> registerUser (@Valid @RequestBody PpmUser ppmUser, BindingResult result){
         //Validate that passwords match
-        userValidator.validate(user, result);
+        userValidator.validate(ppmUser, result);
         
         ResponseEntity<?> errorMap = validationErrorService.ValidationErrorService(result);
         if(errorMap != null) return errorMap;
 
-        User newUser = userService.saveUser(user);
-        return new ResponseEntity<User>(newUser, HttpStatus.CREATED);
+        PpmUser newUser = userService.saveUser(ppmUser);
+        return new ResponseEntity<PpmUser>(newUser, HttpStatus.CREATED);
     }
 }
 

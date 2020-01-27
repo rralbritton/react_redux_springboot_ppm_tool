@@ -1,6 +1,6 @@
 package io.agileintelligence.ppmtool.security;
 
-import io.agileintelligence.ppmtool.models.security.User;
+import io.agileintelligence.ppmtool.models.security.PpmUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -22,17 +22,17 @@ public class JwtTokenProvider {
 
     //Generate token: method that will generate token with username/password = valid
     public String generateToken(Authentication authentication){//make sure that the Authentication parameter comes from the spring core package
-        User user = (User)authentication.getPrincipal();
+        PpmUser ppmUser = (PpmUser)authentication.getPrincipal();
         Date now = new Date(System.currentTimeMillis());
         Date expiryDate = new Date(now.getTime()+EXPIRATION_TIME);
-        String userId = Long.toString(user.getId());
+        String userId = Long.toString(ppmUser.getId());
 
         //Note: Set Claims can be a string or a map. This example uses a map
         Map<String, Object> claims = new HashMap<>();
-        claims.put("id", (Long.toString(user.getId())));
-        claims.put("username", user.getUsername());
-        claims.put("firstName", user.getFirstName());
-        claims.put("lastName", user.getLastName());
+        claims.put("id", (Long.toString(ppmUser.getId())));
+        claims.put("username", ppmUser.getUsername());
+        claims.put("firstName", ppmUser.getFirstName());
+        claims.put("lastName", ppmUser.getLastName());
         /*The claims is where role would go as well
         * ie. claims.put("role", user.getRole());*/
 

@@ -1,6 +1,6 @@
 package io.agileintelligence.ppmtool.validators;
 
-import io.agileintelligence.ppmtool.models.security.User;
+import io.agileintelligence.ppmtool.models.security.PpmUser;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -10,19 +10,19 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return User.class.equals(aClass);
+        return PpmUser.class.equals(aClass);
     }
 
     @Override
     public void validate(Object object, Errors errors) {
 
-        User user = (User) object;
+        PpmUser ppmUser = (PpmUser) object;
 
-        if(user.getPassword().length() <6){
+        if(ppmUser.getPassword().length() <6){
             errors.rejectValue("password","Length", "Password must be at least 6 characters");
         }
 
-        if(!user.getPassword().equals(user.getConfirmPassword())){
+        if(!ppmUser.getPassword().equals(ppmUser.getConfirmPassword())){
             errors.rejectValue("confirmPassword","Match", "Passwords must match");
 
         }

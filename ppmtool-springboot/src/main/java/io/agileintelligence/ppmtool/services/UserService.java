@@ -1,7 +1,7 @@
 package io.agileintelligence.ppmtool.services;
 
-import io.agileintelligence.ppmtool.models.security.User;
-import io.agileintelligence.ppmtool.repositories.UserRepository;
+import io.agileintelligence.ppmtool.models.security.PpmUser;
+import io.agileintelligence.ppmtool.repositories.PpmUserRepository;
 import io.agileintelligence.ppmtool.services.exceptionServices.UsernameAlreadyExistsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private PpmUserRepository ppmUserRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder; //built into spring io.agileintelligence.ppmtool.security
 
     /*Register a new user*/
-    public User saveUser (User newUser){
+    public PpmUser saveUser (PpmUser newUser){
 
         try {
             newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
@@ -25,7 +25,7 @@ public class UserService {
             newUser.setUsername(newUser.getUsername());
             //Do NOT persist or show the confirm Password
             newUser.setConfirmPassword("");
-            return userRepository.save(newUser);
+            return ppmUserRepository.save(newUser);
         } catch (Exception e){
             throw new UsernameAlreadyExistsService("Username: '" + newUser.getUsername() + "' already exists");
         }

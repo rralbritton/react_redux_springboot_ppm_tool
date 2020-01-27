@@ -24,7 +24,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class User implements UserDetails {
+public class PpmUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,12 +56,12 @@ public class User implements UserDetails {
     @PreUpdate void onUpdate() {this.modifiedOn = LocalDate.now(); }
 
     //OneToMany relations with Project Class
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "ppmUser", orphanRemoval = true)
     private List<Project> projects = new ArrayList<>();
 
     /*Constructor*/
 
-    public User() {
+    public PpmUser() {
     }
 
     /*Getters and Setters*/

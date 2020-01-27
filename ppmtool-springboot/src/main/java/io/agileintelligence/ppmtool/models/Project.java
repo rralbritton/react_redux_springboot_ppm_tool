@@ -2,7 +2,7 @@ package io.agileintelligence.ppmtool.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.agileintelligence.ppmtool.models.security.User;
+import io.agileintelligence.ppmtool.models.security.PpmUser;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,7 +54,7 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore /*Prevents infinite recursion problem */
-    private User user;
+    private PpmUser ppmUser;
 
     private String projectLeader;
 
@@ -131,12 +131,12 @@ public class Project {
         this.backlog = backlog;
     }
 
-    public User getUser() {
-        return user;
+    public PpmUser getPpmUser() {
+        return ppmUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setPpmUser(PpmUser ppmUser) {
+        this.ppmUser = ppmUser;
     }
 
     public String getProjectLeader() {
