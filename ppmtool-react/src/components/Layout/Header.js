@@ -12,8 +12,7 @@ class Header extends React.Component {
 
     if (!user || user === undefined) {
       return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
-          <div className="container">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4"> 
             <Link className="navbar-brand" to="/">
               Project Management Tool
       </Link>
@@ -24,14 +23,12 @@ class Header extends React.Component {
               data-target="#mobile-nav"
             >
               <span className="navbar-toggler-icon" />
-            </button>
-          </div>
+            </button>     
         </nav>
       )
     } else {
       return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
-          <div className="container">
             <Link className="navbar-brand" to="/">
               Project Management Tool
           </Link>
@@ -65,8 +62,6 @@ class Header extends React.Component {
                 </li>
               </ul>
             </div>
-
-          </div>
         </nav>
       )
     }

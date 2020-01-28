@@ -6,25 +6,17 @@ export default class Landing extends React.Component {
         return (
             <div className="landing">
                 <div className="landing-text-box">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12 text-center">
-                                <h1 className="display-3 mb-4">Project Management Tool</h1>
-                                <p className="lead">
-                                    Create your account to join active projects or start your own
-                    </p>
-                                <hr />
-                                <a href="/register" className="btn btn-lg btn-primary mr-2">
-                                    Sign Up
-                    </a>
-                                <a href="/login" className="btn btn-lg btn-secondary mr-2">
-                                    Login
-                    </a>
-                            </div>
+                    <div className="row">
+                        <div className="col-md-12 text-center">
+                            <h1>Project Management Tool</h1>
+                            <h3>Create your account to join active projects or start your own </h3>
+                            <hr />
+                            <a href="/register" className="btn btn-lg btn-primary mr-2">Sign Up</a>
+                            <a href="/login" className="btn btn-lg btn-secondary mr-2">Login</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
 
         )
     }

@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import "./css/App.css";
+
+/*CSS - ORDER MATTERS
+Files below bootstrap will over ride bootstrap configs*/
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/App.css";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import configureStore from "./redux/store"
@@ -45,16 +49,19 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App">
-            <Header />
+          <div className="container-fluid">
+            <div className="App">
 
-            <Route exact path="/" render={props => <Landing {...props} />} />
-            <Route exact path="/login" render={props => <Login {...props} />} />
-            <Route exact path="/register" render={props => <Register {...props} />} />
+              <Header />
 
-            <Route exact path="/dashboard" render={props => <Dashboard {...props} />} />
-            <Route exact path="/addProject" render={props => <AddProject {...props} />} />
+              <Route exact path="/" render={props => <Landing {...props} />} />
+              <Route exact path="/login" render={props => <Login {...props} />} />
+              <Route exact path="/register" render={props => <Register {...props} />} />
 
+              <Route exact path="/dashboard" render={props => <Dashboard {...props} />} />
+              <Route exact path="/addProject" render={props => <AddProject {...props} />} />
+
+            </div>
           </div>
         </Router>
       </Provider>
