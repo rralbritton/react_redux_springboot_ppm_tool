@@ -1,7 +1,8 @@
 const initialState = {
     newUser: {},
     validUser: false,
-    userToken: ""
+    userToken: "",
+    user: {}
 }
 
 export const createNewUserReducer = (state = initialState.newUser, action) => {
@@ -26,6 +27,15 @@ export const verifyUserReducer = (state = initialState.validUser, action) => {
 export const storeTokenReducer = (state = initialState.userToken, action) => {
     switch (action.type) {
         case "STORE_TOKEN":
+            return { ...state, payload: action.payload }
+        default:
+            return state
+    }
+}
+
+export const setCurrentUserReducer = (state = initialState.user, action) => {
+    switch (action.type) {
+        case "SET_USER":
             return { ...state, payload: action.payload }
         default:
             return state

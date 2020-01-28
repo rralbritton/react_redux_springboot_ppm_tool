@@ -19,6 +19,10 @@ class Login extends React.Component {
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors })
         }
+
+        if (nextProps.validUser) {
+            this.props.history.push("/dashboard")
+        }
     }
 
     onChange = (e) => {
@@ -37,7 +41,7 @@ class Login extends React.Component {
 
     render() {
 
-        const { errors, username, password } = this.state;
+        const { errors, username, password, user } = this.state;
 
         return (
             <div className="login">
@@ -79,11 +83,13 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-    errors: PropTypes.object.isRequired
+    errors: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    errors: state.errors
+    errors: state.errors,
+    user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
