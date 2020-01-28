@@ -30,12 +30,23 @@ img {
 
 .landing {
   position: relative;
-  /* background: url("../img/showcase.jpg") no-repeat; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(img/landing2.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
+}
+
+.landing-text-box {
+  position: absolute;
+  width: 1140px;
+  top: 20%;
+  left: 20%;
+  background-color: #fff;
+  opacity: .90;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .landing-inner {
