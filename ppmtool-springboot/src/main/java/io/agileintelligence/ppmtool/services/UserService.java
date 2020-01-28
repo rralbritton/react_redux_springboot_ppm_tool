@@ -22,7 +22,10 @@ public class UserService {
         try {
             newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
             //Username must be unique
-            newUser.setUsername(newUser.getUsername());
+            newUser.setUsername(newUser.getUsername().toLowerCase());
+            newUser.setFirstName(newUser.getFirstName().toUpperCase());
+            newUser.setLastName(newUser.getLastName().toUpperCase());
+
             //Do NOT persist or show the confirm Password
             newUser.setConfirmPassword("");
             return ppmUserRepository.save(newUser);

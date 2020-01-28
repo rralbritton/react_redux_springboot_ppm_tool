@@ -49,7 +49,7 @@ public class UserController {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        loginRequest.getUsername(), loginRequest.getPassword()
+                        loginRequest.getUsername().toLowerCase(), loginRequest.getPassword()
                 )
         );
 
