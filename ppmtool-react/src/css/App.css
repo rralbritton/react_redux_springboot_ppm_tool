@@ -10,7 +10,12 @@ img {
 /*NAVIGATION*/
 
 .navbar {
-  background-color: #e3f2fd;
+  /*background-color: #e3f2fd;*/
+  padding: 2rem;
+}
+
+.navbar-brand {
+  font-size: 2.5rem;
 }
 
 /*Headings*/
@@ -26,9 +31,15 @@ h2 {
 }
 
 h3{
-  font-size: 2rem%;
+  font-size: 2rem;
   font-weight: 100;
   color: #252424;
+}
+
+/*BUTTONS*/
+.btn-lg {
+  padding: 1rem 1.5rem;
+  font-size: 2rem;
 }
 
 /* FONT ICONS */
@@ -138,6 +149,7 @@ h3{
 
   .landing-text-box {
       width: 65%;
+      top: 25%;
       left: 17%;
   }
 }
@@ -148,8 +160,19 @@ h3{
     font-size: 3rem;
   }
 
+  .navbar-brand {
+    font-size: 2rem;
+  }
+
   .landing-text-box {
       width: 90%;
+      top: 20%;
       left: 5%;
   }
+
+  .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+  }
+
 }
