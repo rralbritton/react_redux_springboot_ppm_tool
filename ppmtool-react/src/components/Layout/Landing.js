@@ -8,7 +8,7 @@ export default class Landing extends React.Component {
                 <div className="landing-text-box">
                     <div className="row">
                         <div className="col-md-12 text-center">
-                            <h1>Project Management Tool</h1>
+                            <h1 className="ow">Project Management Tool</h1>
                             <h3>Create your account to join active projects or start your own </h3>
                             <hr />
                             <a href="/register" className="btn btn-lg btn-primary mr-2">Sign Up</a>

@@ -7,6 +7,8 @@ img {
   padding: 0;
 }
 
+/*NAVIGATION*/
+
 .navbar {
   background-color: #e3f2fd;
 }
@@ -102,4 +104,52 @@ h3{
 
 .prj-nav-link {
   color: #fff;
+}
+
+/*UTILITIES */
+
+/*overflow-wrap/word wrap*/
+.ow {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/*MEDIA QUERIES*/
+
+@media only screen and (max-width: 768px){
+
+  h1 {
+    font-size: 4rem;
+  }
+
+
+  .landing-text-box {
+      width: 60%;
+      left: 20%;
+  }
+}
+
+@media only screen and (max-width: 576px){
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  .landing-text-box {
+      width: 65%;
+      left: 17%;
+  }
+}
+
+@media only screen and (max-width: 414px){
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .landing-text-box {
+      width: 90%;
+      left: 5%;
+  }
 }
