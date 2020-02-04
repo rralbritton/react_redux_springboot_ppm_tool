@@ -28,7 +28,6 @@ const store = configureStore();
 const jwtToken = localStorage.getItem("jwtToken")
 
 if (jwtToken) {
-  setJwtToken(jwtToken) //sets headers
   const decodedToken = jwtDecode(jwtToken);
   const currentTime = Date.now() / 1000;
 
@@ -37,6 +36,7 @@ if (jwtToken) {
     //if time is expired - log user out
     store.dispatch(logoutUser());
   } else {
+    setJwtToken(jwtToken); //sets headers
     //set user in store
     store.dispatch({ type: "SET_USER", payload: decodedToken })
     store.dispatch({ type: "VERIFY_USER", payload: true });

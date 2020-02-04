@@ -9,37 +9,27 @@ img {
 
 /*NAVIGATION*/
 
-.navbar {
-  /*background-color: #e3f2fd;*/
-  padding: 2rem;
-}
-
 .navbar-brand {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  padding-left: 2rem;
 }
 
 /*Headings*/
 h1 {
-  font-size: 5rem;
+  font-size: 3.5rem;
   color: #252424;
   margin: 1rem;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #252424;
 }
 
 h3{
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 100;
   color: #252424;
-}
-
-/*BUTTONS*/
-.btn-lg {
-  padding: 1rem 1.5rem;
-  font-size: 2rem;
 }
 
 /* FONT ICONS */
@@ -51,6 +41,7 @@ h3{
   color: red;
 }
 
+/*list items*/
 .list-group-item.delete:hover {
   cursor: -webkit-grab;
   background-color: pink;
@@ -66,14 +57,14 @@ h3{
   background-color: gainsboro;
 }
 
+/*LANDING PAGE*/
 .landing {
   position: relative;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(img/landing2.jpg);
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 94vh;
   margin-top: -24px;
-  margin-bottom: -50px;
 }
 
 .landing-text-box {
@@ -131,9 +122,8 @@ h3{
 @media only screen and (max-width: 768px){
 
   h1 {
-    font-size: 4rem;
+    font-size: 3rem;
   }
-
 
   .landing-text-box {
       width: 60%;
@@ -144,35 +134,35 @@ h3{
 @media only screen and (max-width: 576px){
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 
   .landing-text-box {
-      width: 65%;
-      top: 25%;
-      left: 17%;
+      width: 70%;
+      top: 15%;
+      left: 15%;
   }
 }
 
 @media only screen and (max-width: 414px){
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
 
   .navbar-brand {
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   .landing-text-box {
       width: 90%;
-      top: 20%;
+      top: 15%;
       left: 5%;
   }
 
   .btn-lg {
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
   }
 
 }

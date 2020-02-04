@@ -72,7 +72,12 @@ class Login extends React.Component {
                                     />
                                     {errors.password && (<div className="invalid-feedback d-block">{errors.password}</div>)}
                                 </div>
-                                <input type="submit" className="btn btn-info btn-block mt-4" />
+                                <div className="row">
+                                    <div className="col text-center">
+                                        <button type="submit" className="btn btn-secondary mt-4 ">Log In</button>
+                                    </div>
+                                </div>
+
                             </form>
                         </div>
                     </div>

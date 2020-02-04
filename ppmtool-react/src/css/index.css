@@ -1,7 +1,7 @@
 /* 1 rem = 10 px*/
 /* 10px = 62.5% of default font size of browser*/
 html {
-  font-size: 62.5%;
+  max-width: 120rem; /*1200px*/
 }
 
 body {

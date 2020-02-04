@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const setJwtToken = (token, validUser) => {
-    if(token & validUser){
-        axios.defaults.headers.common["AUTHORIZATION"] = token
+const setJwtToken = (token) => {
+    if (token) {
+        axios.defaults.headers.common["Authorization"] = token;
     } else {
-        delete  axios.defaults.headers.common["AUTHORIZATION"]
+        delete axios.defaults.headers.common["Authorization"]
     }
 }
 

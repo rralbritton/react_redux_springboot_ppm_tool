@@ -31,7 +31,7 @@ export const loginUser = (userLogin, history) => {
                 const decode = jwtDecode(results.data.token);
                 dispatch({ type: "SET_USER", payload: decode })
                 //set token in header
-                setJwtToken(results.data.token, results.data.success)
+                setJwtToken(results.data.token)
                 //redirect
                 history.push("/dashboard");
             }).catch(err => {
