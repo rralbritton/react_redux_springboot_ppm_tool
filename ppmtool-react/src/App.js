@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 /*CSS - ORDER MATTERS
-Files below bootstrap will over ride bootstrap configs*/
+Files below app.css will over ride bootstrap configs*/
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/App.css";
 

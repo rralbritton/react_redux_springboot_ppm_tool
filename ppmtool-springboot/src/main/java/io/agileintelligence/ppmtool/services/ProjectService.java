@@ -40,8 +40,8 @@ public class ProjectService {
             project.setProjectLeader(ppmUser.getUsername());
             project.setProjectIdentifier(projectIdentifier);
 
-            if(project.getId() == null){
-                /*Create new backlog*/
+            /*if(project.getId() == null){
+                //Create new backlog
                 Backlog backlog = new Backlog();
                 project.setBacklog(backlog);
                 backlog.setProject(project);
@@ -50,7 +50,7 @@ public class ProjectService {
 
             if(project.getId() !=null){
                 project.setBacklog(backlogRepository.findByProjectIdentifier(projectIdentifier));
-            }
+            }*/
             return projectRepository.save(project);
         } catch (Exception e){
             throw new ProjectIdExceptionService("Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");

@@ -12,12 +12,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Project {
@@ -30,7 +34,6 @@ public class Project {
     private String projectName;
 
     @NotBlank(message = "Project Identifier is required")
-    @Size(min=4, max=5, message="Please use 4 - 5 characters")
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
 
@@ -38,23 +41,35 @@ public class Project {
     private String description;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private Date start_date;
+    private Date startDate;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private Date end_date;
+    private Date endDate;
 
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private Date created_on;
+    private Date createdOn;
     @JsonFormat(pattern = "yyyy-mm-dd")
-    private Date updated_on;
+    private Date updatedOn;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project") //1:1 Relationship with Backlog
+    private BigDecimal estimatedHours;
+    private BigDecimal hourRemaining;
+    private String projectStatus;
+    private String productOwnerName;
+    private String productOwnerDept;
+
+    /*@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project") //1:1 Relationship with Backlog
     @JsonIgnore
-    private Backlog backlog;
+    private Backlog backlog;*/
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "prjId")
+   private List<PrjTask> projectTasks = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore /*Prevents infinite recursion problem */
     private PpmUser ppmUser;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "prjId")
+    private List<ProjectFileAttachment> projectFileAttachments = new ArrayList<>();
 
     private String projectLeader;
 
@@ -91,44 +106,36 @@ public class Project {
         this.description = description;
     }
 
-    public Date getStart_date() {
-        return start_date;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public Date getCreated_on() {
-        return created_on;
+    public Date getCreatedOn() {
+        return createdOn;
     }
 
-    public void setCreated_on(Date created_on) {
-        this.created_on = created_on;
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
     }
 
-    public Date getUpdated_on() {
-        return updated_on;
+    public Date getUpdatedOn() {
+        return updatedOn;
     }
 
-    public void setUpdated_on(Date updated_on) {
-        this.updated_on = updated_on;
-    }
-
-    public Backlog getBacklog() {
-        return backlog;
-    }
-
-    public void setBacklog(Backlog backlog) {
-        this.backlog = backlog;
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
     }
 
     public PpmUser getPpmUser() {
@@ -147,17 +154,73 @@ public class Project {
         this.projectLeader = projectLeader;
     }
 
+    public BigDecimal getEstimatedHours() {
+        return estimatedHours;
+    }
+
+    public void setEstimatedHours(BigDecimal estimatedHours) {
+        this.estimatedHours = estimatedHours;
+    }
+
+    public BigDecimal getHourRemaining() {
+        return hourRemaining;
+    }
+
+    public void setHourRemaining(BigDecimal hourRemaining) {
+        this.hourRemaining = hourRemaining;
+    }
+
+    public String getProjectStatus() {
+        return projectStatus;
+    }
+
+    public void setProjectStatus(String projectStatus) {
+        this.projectStatus = projectStatus;
+    }
+
+    public String getProductOwnerName() {
+        return productOwnerName;
+    }
+
+    public void setProductOwnerName(String productOwnerName) {
+        this.productOwnerName = productOwnerName;
+    }
+
+    public String getProductOwnerDept() {
+        return productOwnerDept;
+    }
+
+    public void setProductOwnerDept(String productOwnerDept) {
+        this.productOwnerDept = productOwnerDept;
+    }
+
+    public List<ProjectFileAttachment> getProjectFileAttachments() {
+        return projectFileAttachments;
+    }
+
+    public void setProjectFileAttachments(List<ProjectFileAttachment> projectFileAttachments) {
+        this.projectFileAttachments = projectFileAttachments;
+    }
+
+    public List<PrjTask> getProjectTasks() {
+        return projectTasks;
+    }
+
+    public void setProjectTasks(List<PrjTask> projectTasks) {
+        this.projectTasks = projectTasks;
+    }
+
     /*Constructor Argument*/
     public Project(){}
 
     /*Automatically append created on and updated on dates to records*/
     @PrePersist
     protected  void onCreate(){
-        this.created_on = new Date();
+        this.createdOn = new Date();
     }
 
     @PreUpdate
     protected void onUpdate(){
-        this.updated_on = new Date();
+        this.updatedOn = new Date();
     }
 }

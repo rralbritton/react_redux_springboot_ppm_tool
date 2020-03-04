@@ -28,10 +28,9 @@ public class ProjectTask {
     @Column(updatable = false, unique = true)
     private String projectSequence;
 
-    @NotBlank(message = "Must Include Project Summary")
+    @NotBlank(message = "Must Include Task Summary")
     private String summary;
 
-    private String acceptanceCriteria;
     private String status;
     private Integer priority;
     private Date dueDate;
@@ -88,14 +87,6 @@ public class ProjectTask {
 
     public void setSummary(String summary) {
         this.summary = summary;
-    }
-
-    public String getAcceptanceCriteria() {
-        return acceptanceCriteria;
-    }
-
-    public void setAcceptanceCriteria(String acceptanceCriteria) {
-        this.acceptanceCriteria = acceptanceCriteria;
     }
 
     public String getStatus() {
@@ -160,7 +151,6 @@ public class ProjectTask {
                 "Id=" + Id +
                 ", projectSequence='" + projectSequence + '\'' +
                 ", summary='" + summary + '\'' +
-                ", acceptanceCriteria='" + acceptanceCriteria + '\'' +
                 ", status='" + status + '\'' +
                 ", priority=" + priority +
                 ", dueDate=" + dueDate +

@@ -26,10 +26,10 @@ public class Backlog {
     private String projectIdentifier;
 
     //1:1 relationship with project
-    @OneToOne(fetch = FetchType.EAGER)
+   /* @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="projectId", nullable = false)
     @JsonIgnore //This is very important! This should be placed on the CHILD of the relationship to prevent recursion errors
-    private Project project;
+    private Project project;*/
 
     //1:M ProjectTasks
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "backlog", orphanRemoval = true)
@@ -62,14 +62,6 @@ public class Backlog {
 
     public void setProjectIdentifier(String projectIdentifier) {
         this.projectIdentifier = projectIdentifier;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
     }
 
     public List<ProjectTask> getProjectTasks() {

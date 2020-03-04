@@ -14,7 +14,7 @@ const Project = props => {
             {project.description}
           </Card.Text>
         </Card.Body>
-        <ListGroup variant="flush">
+        <ListGroup className="list-group-flush">
           <ListGroupItem>View</ListGroupItem>
           <ListGroupItem>Delete</ListGroupItem>
         </ListGroup>
