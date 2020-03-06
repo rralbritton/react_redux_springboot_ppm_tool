@@ -51,6 +51,11 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updatedOn;
 
+    /**project leader is automatically assigned as the person creating the project.
+     * This can be changed.
+     * Currently, only project leaders can view there own projects
+     */
+    private String projectLeader;
     private BigDecimal estimatedHours;
     private BigDecimal hourRemaining;
     private String projectStatus;
@@ -70,8 +75,6 @@ public class Project {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "prjId")
     private List<ProjectFileAttachment> projectFileAttachments = new ArrayList<>();
-
-    private String projectLeader;
 
     /*Getters and Setters*/
     public Long getId() {

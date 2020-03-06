@@ -35,22 +35,15 @@ public class ProjectService {
 
         try{
 
-            PpmUser ppmUser = ppmUserRepository.findByUsername(username);
-            project.setPpmUser(ppmUser);
-            project.setProjectLeader(ppmUser.getUsername());
-            project.setProjectIdentifier(projectIdentifier);
-
-            /*if(project.getId() == null){
-                //Create new backlog
-                Backlog backlog = new Backlog();
-                project.setBacklog(backlog);
-                backlog.setProject(project);
-                backlog.setProjectIdentifier(projectIdentifier);
+            if(project.getProjectLeader() != null){
+                PpmUser ppmUser = ppmUserRepository.findByUsername(project.getProjectLeader());
+                project.setPpmUser(ppmUser);
+            } else {
+                PpmUser ppmUser = ppmUserRepository.findByUsername(username);
+                project.setPpmUser(ppmUser);
+                project.setProjectLeader(ppmUser.getUsername());
             }
-
-            if(project.getId() !=null){
-                project.setBacklog(backlogRepository.findByProjectIdentifier(projectIdentifier));
-            }*/
+            project.setProjectIdentifier(projectIdentifier);
             return projectRepository.save(project);
         } catch (Exception e){
             throw new ProjectIdExceptionService("Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
@@ -74,7 +67,7 @@ public class ProjectService {
         return projectRepository.findAllByProjectLeader(username);
     }
 
-    public void deleteProjectByIdentifier (String projectId, String username){
-        projectRepository.delete(findByProjectIdentifier(projectId, username));
+    public void deleteProjectById (Long projectId, String username){
+        projectRepository.delete(projectRepository.findAllById(projectId));
     }
 }
